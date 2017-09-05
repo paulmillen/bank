@@ -1,4 +1,4 @@
-describe('Account', () => {
+describe('CurrentAccount', () => {
 
   var CurrentAccount = require('../lib/CurrentAccount.js')
   var account = new CurrentAccount;
