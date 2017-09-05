@@ -14,14 +14,29 @@ describe('Printer', () => {
   });
 
   describe('#_header', () => {
+
     it('can print four columns', () => {
       expect(printer._header()).toEqual('date || credit || debit || balance')
     });
   });
 
   describe('#_transactionLine', () => {
-    it('returns the transaction as a string', () => {
-      expect(printer._transactionLine()).toEqual('01/01/2017 || 1000 || || 1500')
+
+    it('returns the transaction as a string within an array', () => {
+      expect(printer._transactionLines()).toEqual(['01/01/2017 || 1000 || || 1500'])
+    });
+
+    it('differentiates between a debit and credit', () => {
+
+      let transaction = { returnDate()    { return '01/01/2017' },
+                          returnAmount()  { return -1000 },
+                          returnBalance() { return 1500 }
+                        }
+
+      var printer = new Printer([transaction]);
+
+      expect(printer._transactionLines()).toEqual(['01/01/2017 || || 1000 || 1500'])
     });
   });
+
 });
