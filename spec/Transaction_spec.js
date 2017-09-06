@@ -20,17 +20,16 @@ describe('Transaction', () => {
 
   describe('#returnAmount', () => {
 
-    it('returns the instantiated date object', () => {
+    it('returns the instantiated amount object', () => {
       expect(transaction.returnAmount()).toEqual(amount);
     });
   });
 
   describe('#returnBalance', () => {
 
-    it('returns the instantiated date object', () => {
+    it('returns the instantiated balance object', () => {
       expect(transaction.returnBalance()).toEqual(balance);
     });
   });
-
 
 });
